@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+#status {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#game-board {
+    display: grid;
+    /* 7 columnas para el tablero */
+    grid-template-columns: repeat(7, 60px); 
+    /* 6 filas para el tablero */
+    grid-template-rows: repeat(6, 60px); 
+    border: 5px solid #0000ff; /* Color del tablero, por ejemplo, azul */
+    background-color: #0000ff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    background-color: #fff; /* Fondo blanco para simular el agujero */
+    border: 1px solid #0000ff;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* Borde redondeado para simular agujeros circulares */
+    border-radius: 50%; 
+}
+
+/* Efecto al pasar el ratón por las celdas de la primera fila */
+.cell[data-row="0"]:hover {
+    background-color: #e0e0e0; 
+}
+
+.cell:not([data-row="0"]):hover {
+    cursor: default; /* Quita el cursor de puntero de las otras filas */
+}
+
+/* Estilos para las fichas (piezas) */
+.piece {
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    /* Animación simple de caída */
+    animation: drop 0.3s ease-out; 
+}
+
+.player1 {
+    background-color: #ff0000; /* Rojo */
+}
+
+.player2 {
+    background-color: #ffd700; /* Amarillo */
+}
+
+@keyframes drop {
+    0% { transform: translateY(-500%); }
+    100% { transform: translateY(0); }
+}
+
+#reset-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
